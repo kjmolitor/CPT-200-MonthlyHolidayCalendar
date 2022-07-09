@@ -23,6 +23,7 @@ root.title("Monthly Events calendar")
 root.config(bg="white")
 root.rowconfigure(0, minsize=800, weight=1)
 root.columnconfigure(1, minsize=800, weight=1)
+
 tasks_frame = tk.Frame(master=root,
             relief=tk.RIDGE,
             borderwidth=1,
@@ -90,7 +91,7 @@ def button__clicked():
 #makes a checkbox(still need to make it work)
 agreement = tk.StringVar()
 agreement2 = tk.StringVar()
-
+cal_frame = Frame(root, height=50, width=100, background="white")
 
 
 
@@ -109,19 +110,27 @@ cal_event2 = tk.Checkbutton(tasks_frame,
 cal_event2.grid(row=2, column=0, sticky="ew", padx=5)
 cal_event.grid(row=1, column=0, sticky="ew", padx=5, pady=5)
 
-temp_label = Label(master=label_frame, text="Events")
+events_label = Label(master=label_frame, text="Events")
+month_label = Label(master=cal_frame, text="Month", font=("Times New Roman", 12))
 
 #Temp solution to pull up the calendar when the {button__clicked} method is called
-myButton = Button(label_frame, text="Open calendar", command=button__clicked)
+cal_button = Button(master=cal_frame, text="Open calendar", command=button__clicked)
 
-month_up = Button(root, text="➡")
-month_down = Button(root, text="⬅")
+add_event = Button(master=cal_frame, text="➕")
 
+month_up = Button(master=cal_frame, text="▶")
+month_down = Button(master=cal_frame, text="◀")
+
+
+cal_frame.grid(row=0, column=1,sticky="nsew")
 tasks_frame.grid(row=0, column=0,sticky="ns")
 label_frame.grid(row=0, column=0,sticky="ew", padx=20, pady=20)
-temp_label.grid(row=0, column=0)
-myButton.grid(row=0, column=1)
-month_up.grid(row=0, column=1)
+events_label.grid(row=0, column=0)
+add_event.place(x=300,y=0)
+cal_button.place(x=300, y=300)
+month_up.place(x=200, y=0)
+month_down.place(x=125,y=0)
+month_label.place(x=150, y=0)
 
 
 
