@@ -99,22 +99,25 @@ cal_event = tk.Checkbutton(tasks_frame,
                 text='Event1',
                 variable=agreement,
                 onvalue='agree',
-                offvalue='disagree')
+                offvalue='disagree',
+                font=("Times New Roman", 12))
 
 cal_event2 = tk.Checkbutton(tasks_frame,
                 text='Event2',
                 variable=agreement2,
                 onvalue='agree',
-                offvalue='disagree')
+                offvalue='disagree',
+                font=("Times New Roman", 12))
 
 cal_event2.grid(row=2, column=0, sticky="ew", padx=5)
 cal_event.grid(row=1, column=0, sticky="ew", padx=5, pady=5)
 
-events_label = Label(master=label_frame, text="Events")
+events_label = Label(master=label_frame, text="Events",font=("Times New Roman", 12))
+
 month_label = Label(master=cal_frame, text="Month", font=("Times New Roman", 12))
 
 #Temp solution to pull up the calendar when the {button__clicked} method is called
-cal_button = Button(master=cal_frame, text="Open calendar", command=button__clicked)
+cal_button = Button(master=cal_frame, text="Open calendar", font=("Times New Roman", 12) , command=button__clicked)
 
 add_event = Button(master=cal_frame, text="➕")
 
