@@ -4,16 +4,14 @@ from __future__ import print_function
 
 import datetime
 import os.path
-
+import tkinter as tk
+from tkinter import *
 
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
-import tkinter as tk
-from tkinter import *
-
 
 root= tk.Tk()
 
