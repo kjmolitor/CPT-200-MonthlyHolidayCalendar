@@ -12,6 +12,7 @@ from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
+from Events import list_AllEvents
 
 root= tk.Tk()
 
@@ -25,13 +26,13 @@ root.columnconfigure(1, minsize=800, weight=1)
 tasks_frame = tk.Frame(master=root,
             relief=tk.RIDGE,
             borderwidth=1,
-            background="orange")
+            background="#b8ffea")
 
 label_frame = tk.Frame(master=tasks_frame, relief=SUNKEN, borderwidth=1, width=50, height=50, bg="white")
 
-#def new_event():
 
-def button__clicked():
+
+def button_clicked():
     # If modifying these scopes, delete the file token.json.
     SCOPES = ['https://www.googleapis.com/auth/calendar']
 
@@ -69,14 +70,9 @@ def button__clicked():
                                                   orderBy='startTime').execute()
             events = events_result.get('items', [])
 
-            if not events:
-                print('No upcoming events found.')
-                return
+            calendar = service.calendars().get(calendarId='primary').execute()
 
-            # Prints the start and name of the next 10 events
-            for event in events:
-                start = event['start'].get('dateTime', event['start'].get('date'))
-                print(start, event['summary'])
+            print(calendar['summary'])
 
         except HttpError as error:
             print('An error occurred: %s' % error)
@@ -86,38 +82,27 @@ def button__clicked():
     if __name__ == '__main__':
         main()
 
-#makes a checkbox(still need to make it work)
-agreement = tk.StringVar()
-agreement2 = tk.StringVar()
+
+
+
+
+
+
+
 cal_frame = Frame(root, height=50, width=100, background="white")
 
 
 
-cal_event = tk.Checkbutton(tasks_frame,
-                text='Event1',
-                variable=agreement,
-                onvalue='agree',
-                offvalue='disagree',
-                font=("Times New Roman", 12))
 
-cal_event2 = tk.Checkbutton(tasks_frame,
-                text='Event2',
-                variable=agreement2,
-                onvalue='agree',
-                offvalue='disagree',
-                font=("Times New Roman", 12))
 
-cal_event2.grid(row=2, column=0, sticky="ew", padx=5)
-cal_event.grid(row=1, column=0, sticky="ew", padx=5, pady=5)
-
-events_label = Label(master=label_frame, text="Events",font=("Times New Roman", 12))
+events_label = Button(master=label_frame, text="Events",font=("Times New Roman", 12), command=list_AllEvents)
 
 month_label = Label(master=cal_frame, text="Month", font=("Times New Roman", 12))
 
 #Temp solution to pull up the calendar when the {button__clicked} method is called
-cal_button = Button(master=cal_frame, text="Open calendar", font=("Times New Roman", 12) , command=button__clicked)
+cal_button = Button(master=cal_frame, text="Open calendar", font=("Times New Roman", 12) , command=button_clicked)
 
-#add_event = Button(master=cal_frame, text="➕")
+
 
 month_up = Button(master=cal_frame, text="▶")
 month_down = Button(master=cal_frame, text="◀")
@@ -127,7 +112,7 @@ cal_frame.grid(row=0, column=1,sticky="nsew")
 tasks_frame.grid(row=0, column=0,sticky="ns")
 label_frame.grid(row=0, column=0,sticky="ew", padx=20, pady=20)
 events_label.grid(row=0, column=0)
-#add_event.place(x=300,y=0)
+
 cal_button.place(x=300, y=300)
 month_up.place(x=200, y=0)
 month_down.place(x=125,y=0)
