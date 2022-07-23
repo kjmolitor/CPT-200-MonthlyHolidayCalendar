@@ -97,15 +97,12 @@ cal_frame = Frame(root, height=50, width=100, background="white")
 
 events_label = Button(master=label_frame, text="Events",font=("Times New Roman", 12), command=list_AllEvents)
 
-month_label = Label(master=cal_frame, text="Month", font=("Times New Roman", 12))
+
 
 #Temp solution to pull up the calendar when the {button__clicked} method is called
 cal_button = Button(master=cal_frame, text="Open calendar", font=("Times New Roman", 12) , command=button_clicked)
 
 
-
-month_up = Button(master=cal_frame, text="▶")
-month_down = Button(master=cal_frame, text="◀")
 
 
 cal_frame.grid(row=0, column=1,sticky="nsew")
@@ -114,9 +111,7 @@ label_frame.grid(row=0, column=0,sticky="ew", padx=20, pady=20)
 events_label.grid(row=0, column=0)
 
 cal_button.place(x=300, y=300)
-month_up.place(x=200, y=0)
-month_down.place(x=125,y=0)
-month_label.place(x=150, y=0)
+
 
 
 
