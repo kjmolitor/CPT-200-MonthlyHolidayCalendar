@@ -5,29 +5,11 @@ from tkinter import *
 
 import google.oauth2.credentials
 import google_auth_oauthlib.flow
-
+import os
 
 # Variables
 window_width = 250
 window_height = 280
-
-# API Credentials to verify the use of the app
-
-# Uses the credentials.json file to identify the app
-flow = google_auth_oauthlib.flow.Flow.from_client_secrets_file(
-    'credentials.json',
-    scopes=['https://www.googleapis.com/auth/calendar'])
-# Indicates where the API server will redirect the user after completing authorization flow
-flow.redirect_uri = 'https://www.example.com/oauth2callback'
-# Generate URL for request to Google's OAuth 2.0 server.
-# Use kwargs to set optional request parameters.
-authorization_url, state = flow.authorization_url(
-    # Enable offline access so that you can refresh an access token without
-    # re-prompting the user for permission. Recommended for web server apps.
-    access_type='offline',
-    # Enable incremental authorization. Recommended as a best practice.
-    include_granted_scopes='true')
-
 
 # On-click events
 def loginClick():
@@ -65,7 +47,7 @@ logo.pack()
 
 # Login button
 loginButton = Button(window,
-                     text = "Login",
+                     text = "Open",
                      font = ("Berlin Sans FB", 12),
                      fg = "#1e3940",
                      bg = "#b8ffea",
