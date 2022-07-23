@@ -14,7 +14,7 @@ def loginClick():
     exec(open("quickstart.py").read())
 
 def helpClick():
-    exec(open("README.md").read())
+    os.system('README.md')
 
 # Window Properties
 window = Tk()
