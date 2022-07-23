@@ -2,9 +2,6 @@
 # Python Tkinter GUI "https://www.youtube.com/watch?v=TuLxsvK4svQ&t=1379s"
 
 from tkinter import *
-
-import google.oauth2.credentials
-import google_auth_oauthlib.flow
 import os
 
 # Variables
@@ -13,7 +10,8 @@ window_height = 280
 
 # On-click events
 def loginClick():
-   exec(open("quickstart.py").read())
+    window.destroy()
+    exec(open("quickstart.py").read())
 
 def helpClick():
     exec(open("README.md").read())
@@ -48,7 +46,7 @@ logo.pack()
 # Login button
 loginButton = Button(window,
                      text = "Open",
-                     font = ("Berlin Sans FB", 12),
+                     font = ("Poppins bold", 12),
                      fg = "#1e3940",
                      bg = "#b8ffea",
                      activeforeground = "#1e3940",
@@ -59,7 +57,7 @@ loginButton.place(x = 100, y = 170)
 # Help button
 helpButton = Button(window,
                      text = "Help",
-                     font = ("Berlin Sans FB", 12),
+                     font = ("Poppins bold", 12),
                      fg = "#1e3940",
                      bg = "#b8ffea",
                      activeforeground = "#1e3940",
